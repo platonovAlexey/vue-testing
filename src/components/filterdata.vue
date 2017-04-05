@@ -1,24 +1,54 @@
 <template>
-		<p>{{ reversedMessage }}</p>
+		<p> {{ reversedmessage }} </p>
 </template>
 
 <script>
 
+	// export default {
+	// 	data () {
+	// 		return {
+	// 				greeting: 'hello',
+	// 				messagenorm: 'фильтр задом на перёд'
+	// 			}
+	// 		},
+	// 	reversedMessage () {
+	// 		return {
+	// 			this.messagenorm.split('').reverse().join('')
+	// 		}
+	// 	}
+	// }
+
+	// export default {
+	// 	data () {
+	// 		return{
+	// 			greeting: 'hello',
+	// 			messagenorm: 'перёд'
+	// 		}
+	// 	},
+	// 	methods: {
+	// 			reversedMessage: function(){
+	// 				return this.messagenorm.split('').reverse().join('')
+					
+	// 			}
+	// 	}
+	// }
+
 	export default {
 		data () {
-			return {
-					greeting: 'hello',
-					messagenorm: 'фильтр задом на перёд'
+			return{
+				greeting: 'hello',
+				messagenorm: 'привет'
+			}
+		},
+		computed () {
+			return{
+				reversedmessage: function () {
+					console.log('done');
+					return this.messagenorm.split('').reverse().join('')
 				}
-			},
-		reversedMessage () {
-			return function(){
-				this.messagenorm.split('').reverse().join('')
 			}
 		}
 	}
-
-// reversedMessage написать как объект
 
 </script>
 

@@ -5,11 +5,11 @@ import filterdata from './components/filterdata.vue'
 
 
 new Vue({
-  el: '#app',
-  components: {
-  	hello: hello,
-  	nohello: nohello,
-  	filterdata: filterdata
-  }
+	el: '#app',
+	components: {
+		hello: hello,
+		nohello: nohello,
+		filterdata: filterdata
+	}
 })
 

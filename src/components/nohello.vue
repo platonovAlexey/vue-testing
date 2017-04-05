@@ -4,12 +4,12 @@
 
 <script>
 
-	module.exports = {
-		data:function () {
+	export default {
+		data () {
 			return {
-				message: 'Нет, не Hello world'
+					message: 'Нет, не Hello world'
+				}
 			}
-		}
 	}
 	
 </script>

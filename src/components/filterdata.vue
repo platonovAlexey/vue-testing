@@ -4,49 +4,17 @@
 
 <script>
 
-	// export default {
-	// 	data () {
-	// 		return {
-	// 				greeting: 'hello',
-	// 				messagenorm: 'фильтр задом на перёд'
-	// 			}
-	// 		},
-	// 	reversedMessage () {
-	// 		return {
-	// 			this.messagenorm.split('').reverse().join('')
-	// 		}
-	// 	}
-	// }
-
-	// export default {
-	// 	data () {
-	// 		return{
-	// 			greeting: 'hello',
-	// 			messagenorm: 'перёд'
-	// 		}
-	// 	},
-	// 	methods: {
-	// 			reversedMessage: function(){
-	// 				return this.messagenorm.split('').reverse().join('')
-					
-	// 			}
-	// 	}
-	// }
-
 	export default {
 		data () {
 			return{
 				greeting: 'hello',
-				messagenorm: 'привет'
+				messagenorm: 'как дела'
 			}
 		},
-		computed () {
-			return{
-				reversedmessage: function () {
-					console.log('done');
+		computed: {
+			reversedmessage: function(){
 					return this.messagenorm.split('').reverse().join('')
 				}
-			}
 		}
 	}
 

@@ -43,7 +43,6 @@
 		computed () {
 			return{
 				reversedmessage: function () {
-					console.log('done');
 					return this.messagenorm.split('').reverse().join('')
 				}
 			}

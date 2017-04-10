@@ -1,5 +1,5 @@
 <template>
-		<p> {{ reversedmessage }} </p>
+		<p class="text"> {{ reversedmessage }} </p>
 </template>
 
 <script>
@@ -8,7 +8,7 @@
 		data () {
 			return{
 				greeting: 'hello',
-				messagenorm: 'как дела'
+				messagenorm: 'работает'
 			}
 		},
 		computed: {
@@ -21,7 +21,7 @@
 </script>
 
 <style lang="scss">
-	p{
+	.text{
 		font-family: sans-serif;
 		color: black; 
 		font-weight: 100; 

@@ -1,6 +1,4 @@
 <template>
-		<!-- <p> {{ reversedmessage }} </p> -->
-
 		<div>
 			<p class="message__text"> {{ reversedmessage }} </p>
 			<hr>
@@ -17,6 +15,7 @@
 				<p v-if="show" class="transition__text">hello</p>
 			</transition>
 		</div>
+
 </template>
 
 <script>
@@ -44,7 +43,7 @@
 </script>
 
 <style lang="scss">
-	p{
+	.text{
 		font-family: sans-serif;
 		color: black; 
 		font-weight: 100; 

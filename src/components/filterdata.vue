@@ -8,12 +8,15 @@
 				</li>
 			</ul>
 			<hr>
-			<button v-on:click="show = !show">
+			<button class="btn btn-danger" v-on:click="show = !show">
 				Переключить
 			</button>
 			<transition name="fade">
 				<p v-if="show" class="transition__text">hello</p>
 			</transition>
+			<hr>
+			<button class="btn btn-primary" v-on:click="counter += 1">+1</button>
+			<p class="btn-counter">Кнопка выше была нажата {{counter}} раз</p>
 		</div>
 
 </template>
@@ -30,7 +33,8 @@
 					firstName: 'Иван',
 					lastName: 'Петров',
 					age: 30
-					}
+					},
+					counter: 0
 			}
 		},
 		computed: {
@@ -68,9 +72,16 @@
 	}
 
 	.fade-enter-active, .fade-leave-active {
-  	transition: opacity .5s
+		transition: opacity .5s
 	}
 	.fade-enter, .fade-leave-to /* .fade-leave-active для <2.1.8 */ {
-	  opacity: 0
+		opacity: 0
+	}
+
+	.btn-counter{
+		text-align: left;
+		font-weight: 100;
+		color: #000;
+		font-size: 12px;
 	}
 </style>

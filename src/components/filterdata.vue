@@ -1,5 +1,24 @@
 <template>
-		<p class="text"> {{ reversedmessage }} </p>
+		<div>
+			<p class="message__text"> {{ reversedmessage }} </p>
+			<hr>
+			<ul class="demo">
+				<li v-for="value in object">
+					{{ value }}
+				</li>
+			</ul>
+			<hr>
+			<button class="btn btn-danger" v-on:click="show = !show">
+				Переключить
+			</button>
+			<transition name="fade">
+				<p v-if="show" class="transition__text">hello</p>
+			</transition>
+			<hr>
+			<button class="btn btn-primary" v-on:click="counter += 1">+1</button>
+			<p class="btn-counter">Кнопка выше была нажата {{counter}} раз</p>
+		</div>
+
 </template>
 
 <script>
@@ -8,7 +27,14 @@
 		data () {
 			return{
 				greeting: 'hello',
-				messagenorm: 'работает'
+				messagenorm: 'хохохо',
+				show: true,
+					object:{
+					firstName: 'Иван',
+					lastName: 'Петров',
+					age: 30
+					},
+					counter: 0
 			}
 		},
 		computed: {
@@ -27,5 +53,35 @@
 		font-weight: 100; 
 		font-size: 22px;
 		text-align: center;
+	}
+	.message__text{
+		color: yellow;
+	}
+
+	.demo{
+		list-style: none;
+		li{
+			color: green;
+			font-size: 22px;
+		}
+	}
+
+	.transition__text{
+		text-align: left;
+		color: tomato;
+	}
+
+	.fade-enter-active, .fade-leave-active {
+		transition: opacity .5s
+	}
+	.fade-enter, .fade-leave-to /* .fade-leave-active для <2.1.8 */ {
+		opacity: 0
+	}
+
+	.btn-counter{
+		text-align: left;
+		font-weight: 100;
+		color: #000;
+		font-size: 12px;
 	}
 </style>

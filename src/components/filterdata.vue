@@ -23,7 +23,7 @@
 <style lang="scss">
 	.text{
 		font-family: sans-serif;
-		color: black; 
+		color: tomato; 
 		font-weight: 100; 
 		font-size: 22px;
 		text-align: center;

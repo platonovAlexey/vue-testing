@@ -17,20 +17,36 @@
 				<div class="blog">
 				<input type="text" placeholder="Поиск квартиры" v-model="search" class="blog__search form-control"/>
 				<div class="blog__buttons">
-					<button class="btn btn-primary" value="one">1-комнатная</button>
-					<button class="btn btn-primary" value="two">2-комнатная</button>
-					<button class="btn btn-primary" value="three">3-комнатная</button>
+					<button class="btn btn-primary" @click="sort = 'body'">1-комнатная</button>
+					<button class="btn btn-primary" @click="sort = 'title'">2-комнатная</button>
+					<button class="btn btn-primary" @click="sort = 'id'">3-комнатная</button>
 				</div>
+				<ul>
 
-					<li class="blog__post" v-for="card in filteredCards" >
+					<!-- Filter input -->
+					<li class="blog__post" v-for="card in filteredCards">
 						<img :src="card.image" alt="photo" class="blog__img">
 						<div class="blog__desc__wrapper">
 							<div class="blog__text">{{ card.title }}</div>
 							<div class="blog__desc">{{ card.body }}</div>
 							<button class="btn btn-secondary">Добавить в избранное</button>
 						</div>
-
 					</li>
+
+					<!-- Filter buttons -->
+					<!-- <li class="blog__post" v-for="card in orderedCards">
+						<img :src="card.image" alt="photo" class="blog__img">
+						<div class="blog__desc__wrapper">
+							<div class="blog__text">{{ card.title }}</div>
+							<div class="blog__desc">{{ card.body }}</div>
+							<button class="btn btn-secondary">Добавить в избранное</button>
+						</div>
+					</li> -->
+				</ul>
+					
+
+					
+
 				</div>
 
 				
@@ -50,12 +66,15 @@
 <script>
 
 var cards = require('../cards');
+import _ from 'lodash';
+
 
 export default {
 		data () {
 			return{
 				cards: cards,
-				search: ''
+				search: '',
+				sort: 'name'
 			}
 		},
 
@@ -67,6 +86,12 @@ export default {
 							if (searchRegex.test(card.title) || searchRegex.test(card.body))
 								return true;
 						}.bind(this))
+					},
+					orderedCards: function () {
+						return _.orderBy(this.cards, this.sort);
+					},
+					cardsFiltered: function () {
+						return this.orderedCards.concat(this.filteredCards);
 					}
 				}
 	}
@@ -74,7 +99,14 @@ export default {
 </script>
 
 <style lang="scss">
-
+.btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle{
+	background-color: #025aa5 !important;
+}
+.btn-primary:focus, .btn-primary.focus{
+	background: #781E19 !important;
+	box-shadow: none !important;
+	border-color: #781E19 !important;
+}
 
 .blog{
 	margin-bottom: 100px;

@@ -42,6 +42,16 @@
 							<button class="btn btn-secondary">Добавить в избранное</button>
 						</div>
 					</li> -->
+
+					<!-- All Filters - don't work-->
+					<!-- <li class="blog__post" v-for="card in cardsFiltered">
+						<img :src="card.image" alt="photo" class="blog__img">
+						<div class="blog__desc__wrapper">
+							<div class="blog__text">{{ card.title }}</div>
+							<div class="blog__desc">{{ card.body }}</div>
+							<button class="btn btn-secondary">Добавить в избранное</button>
+						</div>
+					</li> -->
 				</ul>
 					
 

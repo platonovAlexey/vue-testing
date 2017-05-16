@@ -23,7 +23,6 @@ new Vue({
 	}
 })
 
-var favorites = document.querySelector('.btn-favorites');
 var postItem = document.querySelector('.blog__post__item');
 var postList = document.getElementById('post__list');
 var postListFavorites = document.getElementById('post__list__favorites');
@@ -45,15 +44,15 @@ var postListFavorites = document.getElementById('post__list__favorites');
 		var newParent = this.parentNode.id == 'cont1' ? 'cont2' : 'cont1';
 		document.getElementById(newParent).appendChild(this);
 
-		if(cont2.innerHTML !== ''){
+		if(cont2.innerHTML !== ''  ){
 			btnFavoritesTab.classList.add('btn-favorites-tab');
 			btnFavoritesTab.innerHTML = 'Убрать из избранного';
-		}else{
-			btnFavoritesTab.classList.remove('btn-favorites-tab');
-			btnFavoritesTab.innerHTML = 'Добавить в избранное';
 		}
-
-
+		// else{
+		// 	btnFavoritesTab.classList.remove('btn-favorites-tab');
+		// 	btnFavoritesTab.innerHTML = 'Добавить в избранное';
+		// }
+		
 
 		localStorage.setItem('deleteItem','removeItem');
 	}

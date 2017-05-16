@@ -109,6 +109,11 @@ export default {
 </script>
 
 <style lang="scss">
+//colors
+$colorAccent: #781e19;
+$colorWhite: #fff;
+
+
 .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle{
 	background-color: #025aa5 !important;
 }
@@ -118,87 +123,88 @@ export default {
 	border-color: #781E19 !important;
 }
 
-.blog{
+%extend_1 {
+	transform: rotateX(0deg);
+	opacity: 1;
+	z-index: 1;
+}
+.blog {
 	margin-bottom: 100px;
 }
-
-.blog__buttons{
+.blog__buttons {
 	margin-bottom: 20px;
 }
-
-.blog__post__item{
+.blog__post__item {
 	position: relative;
 	overflow: hidden;
 	margin-bottom: 20px;
 	list-style: none;
 }
-
-.blog__img{
+.blog__img {
 	display: block;
 	float: left;
 	width: 300px;
 	height: 300px;
 	margin-right: 20px;
 }
-
-
-.blog__desc{
+.blog__desc {
 	font-size: 12px;
 	text-align: left;
 	margin-bottom: 20px;
 }
-.blog__search{
+.blog__search {
 	margin-bottom: 20px;
 }
-	.tabbed {
+.tabbed {
 	width: 100%;
 	margin: 50px auto;
+	> input {
+		display: none;
+		&:checked + label {
+			background: $colorAccent;
+			color: $colorWhite;
+		}
+	}
+	> label {
+		display: block;
+		float: left;
+		padding: 12px 20px;
+		margin-right: 5px;
+		cursor: pointer;
+		transition: background-color .3s;
+		&:hover {
+			background: $colorAccent;
+			color: $colorWhite;
+		}
+	}
 }
-
-.tabbed > input {
-	display: none;
-}
-
-.tabbed > label {
-	display: block;
-	float: left;
-	padding: 12px 20px;
-	margin-right: 5px;
-	cursor: pointer;
-	transition: background-color .3s;
-}
-
-.tabbed > label:hover,
-.tabbed > input:checked + label {
-	background: #781E19;
-	color: #fff;
-}
-
 .tabs {
 	clear: both;
 	perspective: 600px;
+	> div {
+		width: 100%;
+		position: absolute;
+		border: 2px solid $colorAccent;
+		padding: 10px 30px 40px;
+		line-height: 1.4em;
+		opacity: 0;
+		transform: rotateX(-20deg);
+		transform-origin: top center;
+		transition: opacity .3s, transform 1s;
+		z-index: 0;
+	}
 }
-
-.tabs > div {
-	width: 100%;
-	position: absolute;
-	border: 2px solid #781E19;
-	padding: 10px 30px 40px;
-	line-height: 1.4em;
-	opacity: 0;
-	transform: rotateX(-20deg);
-	transform-origin: top center;
-	transition: opacity .3s, transform 1s;
-	z-index: 0;
+#tab-nav-1:checked ~ .tabs > div:nth-of-type(1) {
+	@extend %extend_1;
 }
-
-#tab-nav-1:checked ~ .tabs > div:nth-of-type(1),
-#tab-nav-2:checked ~ .tabs > div:nth-of-type(2),
-#tab-nav-3:checked ~ .tabs > div:nth-of-type(3),
-#tab-nav-4:checked ~ .tabs > div:nth-of-type(4){
-	transform: rotateX(0deg);
-	opacity: 1;
-	z-index: 1;
+#tab-nav-2:checked ~ .tabs > div:nth-of-type(2) {
+	@extend %extend_1;
+}
+#tab-nav-3:checked ~ .tabs > div:nth-of-type(3) {
+	@extend %extend_1;
+}
+#tab-nav-4:checked ~ .tabs > div:nth-of-type(4) {
+	@extend %extend_1;
 }
 
 @media screen and (max-width: 700px) {

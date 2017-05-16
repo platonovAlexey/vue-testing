@@ -15,53 +15,52 @@
 
 
 				<div class="blog">
-				<input type="text" placeholder="Поиск квартиры" v-model="search" class="blog__search form-control"/>
-				<div class="blog__buttons">
-					<button class="btn btn-primary" @click="sort = 'body'">1-комнатная</button>
-					<button class="btn btn-primary" @click="sort = 'title'">2-комнатная</button>
-					<button class="btn btn-primary" @click="sort = 'id'">3-комнатная</button>
-				</div>
-				<ul>
+					<input type="text" placeholder="Поиск квартиры" v-model="search" class="blog__search form-control"/>
+					<!-- <div class="blog__buttons">
+						<button class="btn btn-primary" @click="sort = 'images'">1-комнатная</button>
+						<button class="btn btn-primary" @click="sort = 'body'">2-комнатная</button>
+						<button class="btn btn-primary" @click="sort = 'title'">3-комнатная</button>
+					</div> -->
+					<div class="post__list" id="cont1">
 
-					<!-- Filter input -->
-					<li class="blog__post" v-for="card in filteredCards">
-						<img :src="card.image" alt="photo" class="blog__img">
-						<div class="blog__desc__wrapper">
-							<div class="blog__text">{{ card.title }}</div>
-							<div class="blog__desc">{{ card.body }}</div>
-							<button class="btn btn-secondary">Добавить в избранное</button>
+						<!-- Filter input -->
+						<div class="blog__post__item" v-for="card in filteredCards">
+							<img :src="card.image" alt="photo" class="blog__img">
+							<div class="blog__desc__wrapper">
+								<div class="blog__text">{{ card.title }}</div>
+								<div class="blog__desc">{{ card.body }}</div>
+								<button class="btn btn-secondary btn-favorites">Добавить в избранное</button>
+							</div>
 						</div>
-					</li>
 
-					<!-- Filter buttons -->
-					<!-- <li class="blog__post" v-for="card in orderedCards">
-						<img :src="card.image" alt="photo" class="blog__img">
-						<div class="blog__desc__wrapper">
-							<div class="blog__text">{{ card.title }}</div>
-							<div class="blog__desc">{{ card.body }}</div>
-							<button class="btn btn-secondary">Добавить в избранное</button>
-						</div>
-					</li> -->
+						<!-- Filter buttons -->
+						<!-- <li class="blog__post__item" v-for="card in orderedCards">
+							<img :src="card.image" alt="photo" class="blog__img">
+							<div class="blog__desc__wrapper">
+								<div class="blog__text">{{ card.title }}</div>
+								<div class="blog__desc">{{ card.body }}</div>
+								<button class="btn btn-secondary">Добавить в избранное</button>
+							</div>
+						</li> -->
 
-					<!-- All Filters - don't work-->
-					<!-- <li class="blog__post" v-for="card in cardsFiltered">
-						<img :src="card.image" alt="photo" class="blog__img">
-						<div class="blog__desc__wrapper">
-							<div class="blog__text">{{ card.title }}</div>
-							<div class="blog__desc">{{ card.body }}</div>
-							<button class="btn btn-secondary">Добавить в избранное</button>
-						</div>
-					</li> -->
-				</ul>
-					
-
-					
-
+						<!-- All Filters - don't work-->
+						<!-- <li class="blog__post__item" v-for="card in cardsFiltered">
+							<img :src="card.image" alt="photo" class="blog__img">
+							<div class="blog__desc__wrapper">
+								<div class="blog__text">{{ card.title }}</div>
+								<div class="blog__desc">{{ card.body }}</div>
+								<button class="btn btn-secondary">Добавить в избранное</button>
+							</div>
+						</li> -->
+					</div>
 				</div>
 
-				
 			</div>
-			<div><h2>Избранное</h2><p>Maecenas dictum, urna ut consequat condimentum, est dui commodo diam, ac pretium dui ante eu qus.</p></div>
+			<div><h2>Избранное</h2>
+				<div class="post__list__favorites" id="cont2">
+					<!-- <li class="post__list__favorites__item"></li> -->
+				</div>
+			</div>
 			
 		</div>
 	</div>
@@ -84,7 +83,7 @@ export default {
 			return{
 				cards: cards,
 				search: '',
-				sort: 'name'
+				sort: 'title'
 			}
 		},
 
@@ -106,6 +105,7 @@ export default {
 				}
 	}
 
+
 </script>
 
 <style lang="scss">
@@ -126,7 +126,7 @@ export default {
 	margin-bottom: 20px;
 }
 
-.blog__post{
+.blog__post__item{
 	position: relative;
 	overflow: hidden;
 	margin-bottom: 20px;

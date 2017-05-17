@@ -3,6 +3,7 @@ import BootstrapVue from 'bootstrap-vue'
 import carousel from './components/carousel.vue'
 import navigation from './components/navigation.vue'
 import tabbed from './components/tabbed.vue'
+import filtertable from './components/filtertable.vue'
 
 import VueRouter from 'vue-router'
 
@@ -19,7 +20,8 @@ new Vue({
 	components: {
 		navigation:navigation,
 		carousel: carousel,
-		tabbed:tabbed
+		tabbed:tabbed,
+		filtertable: filtertable
 	}
 })
 

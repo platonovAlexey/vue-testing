@@ -113,6 +113,19 @@ export default {
 $colorAccent: #781e19;
 $colorWhite: #fff;
 
+.tabbed__wrapper, .filter__table{
+	position: relative;
+	margin-bottom: 40px;
+	&:before{
+		content: "";
+		display: table;
+	}
+	&:after{
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
 
 .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle{
 	background-color: #025aa5 !important;
@@ -181,6 +194,7 @@ $colorWhite: #fff;
 .tabs {
 	clear: both;
 	perspective: 600px;
+	position: relative;
 	> div {
 		width: 100%;
 		position: absolute;

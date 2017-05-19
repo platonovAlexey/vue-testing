@@ -3,13 +3,12 @@
 	<div class="container">
 		<div class="row">
 			<h2>Выбор квартиры</h2>
-			<input v-model="search" class="form-control" placeholder="Поиск квартир">
 		
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th v-for="column in columns">
-						<a class="table__link" href="#" v-on:click="sortBy(column)" v-on:active="sortKey == column">
+						<a class="table__link" href="#" @click="sortBy(column)" v-on:active="sortKey == column">
 							{{ column }}
 						</a>
 					</th>
@@ -17,7 +16,7 @@
 			</thead>
 
 			<tbody>
-				<tr v-for="card in orderedCards" >
+				<tr v-for="card in orderedCards">
 					<td>{{ card.title }}</td>
 					<td>{{ card.body }}</td>
 					<td>{{ card.value }}</td>
@@ -41,29 +40,22 @@ import _ from 'lodash';
 				cards: cards,
 				sortKey: 'title',
 				reverse: false,
-				search: '',
 				columns: ['Название', 'Описание', 'Количество комнат']
 			}
 		},
 
 		computed: {
-			filteredCards: function () {
-						return this.cards.filter(function (card) {
-							var searchRegex = new RegExp(this.search, 'i');
-
-							if (searchRegex.test(card.title) || searchRegex.test(card.body))
-								return true;
-						}.bind(this))
-			},
 			orderedCards: function () {
-	  		return _.orderBy(this.cards, this.sortKey)
-			},
+	  		return _.orderBy(cards, ['title', 'body', 'value'])
+			}
+		},
+
+		methods: {
 			sortBy: function(sortKey) {
 				this.reverse = (this.sortKey == sortKey) ? ! this.reverse : false;
 				this.sortKey = sortKey;
 			}
-	}
-
+		}
 	}
 </script>
 

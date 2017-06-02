@@ -8,8 +8,8 @@
 			<thead>
 				<tr>
 					<th v-for="column in columns">
-						<a class="table__link" href="#" @click="sortBy(column)" v-on:active="sortKey == column">
-							{{ column }}
+						<a class="table__link" href="#" @click="sortBy(column)">
+							{{ column | capitalize }}
 						</a>
 					</th>
 				</tr>
@@ -38,23 +38,24 @@ import _ from 'lodash';
 		data () {
 			return {
 				cards: cards,
-				sortKey: 'title',
+				sortKey: ['title', 'body', 'id'],
 				reverse: false,
 				columns: ['Название', 'Описание', 'Количество комнат']
 			}
 		},
 
 		computed: {
-			orderedCards: function () {
-	  		return _.orderBy(cards, ['title', 'body', 'value'])
-			}
+			orderedCards: function (e) {
+				return _.orderBy(this.cards, this.sortKey)
+			},
 		},
 
 		methods: {
 			sortBy: function(sortKey) {
 				this.reverse = (this.sortKey == sortKey) ? ! this.reverse : false;
 				this.sortKey = sortKey;
-			}
+
+		 },
 		}
 	}
 </script>

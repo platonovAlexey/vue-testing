@@ -6,6 +6,7 @@ import tabbed from './components/tabbed.vue'
 import filtertable from './components/filtertable.vue'
 
 import VueRouter from 'vue-router'
+import Vue2Filters from 'vue2-filters'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -13,6 +14,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
+Vue.use(Vue2Filters)
 
 
 new Vue({

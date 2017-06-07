@@ -1,32 +1,18 @@
 <template>
 	<div class="filter__table">
-	<div class="container">
-		<div class="row">
-			<h2>Выбор квартиры</h2>
-		
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th v-for="column in columns">
-						<a class="table__link" href="#" @click="sortBy(column)">
-							{{ column | capitalize }}
-						</a>
-					</th>
-				</tr>
-			</thead>
+		<div class="container">
+			<div class="row">
+				<vue-good-table
+					title="Выбор квартиры"
+					:columns="columns"
+					:globalSearch="true"
+					:rows='cards'
+					globalSearchPlaceholder="Искать квартиру"
+					styleClass="table condensed table-bordered table-striped">
+				</vue-good-table>
 
-			<tbody>
-				<tr v-for="card in orderedCards">
-					<td>{{ card.title }}</td>
-					<td>{{ card.body }}</td>
-					<td>{{ card.value }}</td>
-				</tr>
-			</tbody>
-		</table>
-		
+			</div>
 		</div>
-	</div>
-		
 	</div>
 </template>
 
@@ -38,24 +24,22 @@ import _ from 'lodash';
 		data () {
 			return {
 				cards: cards,
-				sortKey: ['title', 'body', 'id'],
-				reverse: false,
-				columns: ['Название', 'Описание', 'Количество комнат']
+				columns: [
+					{
+						label: 'Название',
+						field: 'title',
+					},
+					{
+						label: 'Описание',
+						field: 'body',
+					},
+					{
+						label: 'Количество комнат',
+						field: 'value',
+						width: '50px'
+					}
+				]
 			}
-		},
-
-		computed: {
-			orderedCards: function (e) {
-				return _.orderBy(this.cards, this.sortKey)
-			},
-		},
-
-		methods: {
-			sortBy: function(sortKey) {
-				this.reverse = (this.sortKey == sortKey) ? ! this.reverse : false;
-				this.sortKey = sortKey;
-
-		 },
 		}
 	}
 </script>
@@ -70,5 +54,11 @@ import _ from 'lodash';
 			color: #000;
 			text-decoration: underline;
 		}
+	}
+	.good-table {
+		width: 100%;
+	}
+	table thead .sorting:before, table thead .sorting_asc:before, table thead .sorting_asc_disabled:before, table thead .sorting_desc:before, table thead .sorting_desc_disabled:before{
+		display: none !important;
 	}
 </style>

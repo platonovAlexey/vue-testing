@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
+import VueGoodTable from 'vue-good-table';
 import carousel from './components/carousel.vue'
 import navigation from './components/navigation.vue'
 import tabbed from './components/tabbed.vue'
 import filtertable from './components/filtertable.vue'
+
 
 import VueRouter from 'vue-router'
 import Vue2Filters from 'vue2-filters'
@@ -14,7 +16,8 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
-Vue.use(Vue2Filters)
+Vue.use(Vue2Filters);
+Vue.use(VueGoodTable);
 
 
 new Vue({
@@ -36,7 +39,6 @@ var postListFavorites = document.getElementById('post__list__favorites');
 	if (localStorage.getItem('deleteItem') !== null) {
 		var item = localStorage.getItem('deleteItem');
 
-
 	}
 
 	postItem.addEventListener('click', shift);
@@ -57,7 +59,5 @@ var postListFavorites = document.getElementById('post__list__favorites');
 		// 	btnFavoritesTab.innerHTML = 'Добавить в избранное';
 		// }
 		
-
 		localStorage.setItem('deleteItem','removeItem');
 	}
-

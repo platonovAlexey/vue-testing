@@ -5,6 +5,7 @@ import carousel from './components/carousel.vue'
 import navigation from './components/navigation.vue'
 import tabbed from './components/tabbed.vue'
 import filtertable from './components/filtertable.vue'
+import filtertable2 from './components/filtertable2.vue'
 
 
 import VueRouter from 'vue-router'
@@ -26,7 +27,8 @@ new Vue({
 		navigation:navigation,
 		carousel: carousel,
 		tabbed:tabbed,
-		filtertable: filtertable
+		filtertable: filtertable,
+		filtertable2: filtertable2
 	}
 })
 
